@@ -1,0 +1,25 @@
+{
+  "name": "morrelinko/laravel5-socialplus",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "Morrelinko\\SocialPlus\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/support": "5.0.x",
+    "illuminate/session": "5.0.x",
+    "illuminate/console": "5.0.x"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Morrelinko\\SocialPlus\\Tests\\": "tests/"
+    }
+  }
+}
