@@ -10,9 +10,10 @@
     }
   },
   "require": {
-    "illuminate/support": "5.1.x",
-    "illuminate/session": "5.1.x",
-    "illuminate/console": "5.1.x"
+    "illuminate/contracts": "5.1.*",
+    "illuminate/support": "5.1.*",
+    "illuminate/session": "5.1.*",
+    "illuminate/console": "5.1.*"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*"
