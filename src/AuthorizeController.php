@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Str;
 
 /**
  * @author Laju Morrison <morrelinko@gmail.com>

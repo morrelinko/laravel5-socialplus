@@ -7,5 +7,9 @@ namespace Morrelinko\SocialPlus;
  */
 interface AuthorizeHandler
 {
-    public function getIdentifier();
+    public function authorize($provider);
+
+    public function callback($user, $token, $provider);
+
+    public function exception($exception, $provider);
 }
