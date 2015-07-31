@@ -48,11 +48,12 @@ class SocialPlus
     }
 
     /**
+     * @param $identifier
      * @param AuthorizeHandler $handler
      */
-    public function registerAuthorizeHandler($handler)
+    public function registerAuthorizeHandler($identifier, $handler)
     {
-        $this->handlers[$handler->getIdentifier()] = $handler;
+        $this->handlers[$identifier] = $handler;
     }
 
     /**

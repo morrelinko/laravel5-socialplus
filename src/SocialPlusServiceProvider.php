@@ -35,23 +35,24 @@ class SocialPlusServiceProvider extends ServiceProvider
             __DIR__ . '/../config/socialplus.php', 'socialplus'
         );
 
-        $this->app->singleton('socialplus', function (Application $app) {
+        $this->app->singleton('socialplus', function (Application $app)
+        {
             $socialPlus = new SocialPlus($app['session']);
 
             $socialPlus->setSocialite(
                 $this->app->make('Laravel\Socialite\Contracts\Factory')
             );
 
-            foreach ($this->app['config']->get('socialplus.authorize_handlers') as $handler) {
-                $socialPlus->registerAuthorizeHandler(
-                    $this->app->make($handler)
-                );
+            foreach ($this->app['config']->get('socialplus.authorize_handlers') as $identifier => $handler)
+            {
+                $socialPlus->registerAuthorizeHandler($identifier, $this->app->make($handler));
             }
 
             return $socialPlus;
         });
 
-        $this->app->bind('Morrelinko\SocialPlus\SocialPlus', function () {
+        $this->app->bind('Morrelinko\SocialPlus\SocialPlus', function ()
+        {
             return $this->app['socialplus'];
         });
     }
