@@ -38,7 +38,7 @@ Handlers are registered in `config/socialplus.php` like so
     
     return [
         'authorize_handlers' => [
-            'App\Handlers\SocialPlus\AuthHandler'
+            'login' => App\Handlers\SocialPlus\LoginHandler::class
         ]
     ];
 
@@ -52,7 +52,7 @@ Suggestion: Handlers should be placed in `app/Handlers/SocialPlus` folder
     use Morrelinko\SocialPlus\AuthorizeHandler;
     use Laravel\Socialite\Contracts\User as SocialiteUser;
     
-    class AuthHandler implements AuthorizeHandler
+    class LoginHandler implements AuthorizeHandler
     {
         public function getIdentifier()
         {
@@ -66,22 +66,27 @@ Suggestion: Handlers should be placed in `app/Handlers/SocialPlus` folder
         
         public function callback(SocialiteUser $socialiteUser, $accessToken, $provider)
         {
-            // Use the information provided as arguments for whatever your needs are.
+            // Executed after a successful authorization
+        }
+        
+        public function exception($exception, $provider)
+        {
+            // Executed when an exception occurs / authorization fails
         }
     }
     
 Once you done registering the handler, you create a link like so;
 
-    // - route('socialplus.authorize', ['provider' => 'facebook', 'a' => 'auth'])
+    // - route('socialplus.authorize', ['provider' => 'facebook', 'a' => 'login'])
 
-    // - eg
+    // - Like So:
     
-    <a href="{{ route('socialplus.authorize', ['provider' => 'facebook', 'a' => 'auth']) }}">Login With Facebook</a>
+    <a href="{{ route('socialplus.authorize', ['provider' => 'facebook', 'a' => 'login']) }}">Login With Facebook</a>
 
-notice the 'a' parameter? .... That's the value you return from `getIdentifier()` in the handler we just created and
+notice the 'a' parameter? .... That's the value you use to connect handler we just created and
 
-its what tells socialplus what handler to use before and after authorization.
-    
+its what tells socialplus what handler to use for that specific action.
+
 ## Contribute
 
-[WIP] This documentation is a work in progress and would really appreciate contributions.
+[WIP] This documentation is a work in progress and would really appreciate contributions. :)
