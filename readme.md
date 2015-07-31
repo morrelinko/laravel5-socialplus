@@ -54,11 +54,6 @@ Suggestion: Handlers should be placed in `app/Handlers/SocialPlus` folder
     
     class LoginHandler implements AuthorizeHandler
     {
-        public function getIdentifier()
-        {
-            return 'auth';
-        }
-        
         public function authorize($provider)
         {
             // Called before any request is made to the provider
